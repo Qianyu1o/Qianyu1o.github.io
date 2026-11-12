@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Qianyu Wang</title>
+<meta name="description" content="Qianyu (Nova) Wang, digital artist working with animacy: moving image, real-time 3D and generative media.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one screen, no page scroll. A sidebar index on the left, a dark stage of the work on the right that the
+   visitor leafs through (wheel, drag, click, arrow keys); images change at once, with no motion. Opening a project
+   adds its introduction beside the stage. Single dark look, by choice: the work lives in the dark. */
+:root {
+  --night: #0a0d0c;        /* page */
+  --plate: #040605;        /* stage behind the images */
+  --ink: #e7e3d9;          /* text, warm like paper under a lamp */
+  --muted: #8b938e;
+  --rule: #232a27;
+  --lamp: #e9d5aa;         /* accent: the projector light */
+  --tbc: #3a3417;
+  --display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --serif: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --small: 0.75rem;
+  --body: 1rem;
+  --side: 15.5rem;
+  --panel: 23rem;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; overflow: hidden; overflow: clip; }
+body {
+  margin: 0; background: var(--night); color: var(--ink);
+  font: 400 var(--body)/1.6 var(--serif); -webkit-font-smoothing: antialiased;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 16px;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a:focus-visible, button:focus-visible { outline: 1px solid var(--lamp); outline-offset: 4px; }
+p { margin: 0; }
+h1, h2 { font-family: var(--display); font-weight: 400; margin: 0; line-height: 1; text-wrap: balance; }
+.label { font: 500 var(--small)/1.4 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.tbc { background: var(--tbc); padding: 0 0.25em; border-radius: 2px; }
+
+.shell { height: 100%; display: grid; grid-template-columns: var(--side) minmax(0, 1fr); gap: 24px; }
+.shell.open { grid-template-columns: var(--side) minmax(0, 1fr) var(--panel); }
+
+/* sidebar */
+.side { display: flex; flex-direction: column; gap: 28px; min-height: 0; padding-block: 8px 4px; }
+.me { display: grid; gap: 6px; }
+.me a { font: 400 1.9rem/1 var(--display); }
+.index { display: grid; gap: 4px; }
+.index ol { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 2px; }
+.index a { display: grid; grid-template-columns: 0.9rem minmax(0, 1fr); align-items: baseline; padding: 6px 0; }
+.index a::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--lamp); opacity: 0; transform: translateY(-0.2em); transition: opacity 0.3s ease; }
+.index a b { font: 400 1.45rem/1.1 var(--display); color: var(--muted); transition: color 0.25s ease; }
+.index a small { grid-column: 2; font: 400 0.7rem/1.5 var(--mono); letter-spacing: 0.06em; color: var(--muted); }
+.index a:hover b, .index a.on b { color: var(--ink); }
+.index a.on::before { opacity: 1; }
+.links { margin-top: auto; display: grid; gap: 10px; }
+.links nav { display: flex; gap: 20px; }
+.links nav a { font: 500 var(--small)/1.4 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.links nav a:hover, .links nav a.on { color: var(--ink); }
+.draft { font: 400 0.68rem/1.5 var(--mono); color: var(--muted); max-width: 26ch; }
+
+/* stage */
+.stage { position: relative; min-width: 0; min-height: 0; background: var(--plate); overflow: hidden; overflow: clip; touch-action: pan-y; user-select: none; }
+.layer { position: absolute; inset: 0; display: grid; place-items: center; }
+.layer img { width: 100%; height: 100%; object-fit: contain; max-width: 100%; pointer-events: none; }
+.shell:not(.open) .layer img { object-fit: cover; }
+@media (max-width: 860px) { .shell:not(.open) .layer img { object-fit: contain; } }
+.empty { display: grid; gap: 10px; place-items: center; text-align: center; padding: 24px; }
+.empty h2 { font-size: clamp(2.4rem, 6vw, 5rem); color: var(--ink); }
+
+.cap { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px;
+  padding: 18px 20px; pointer-events: none; text-shadow: 0 1px 14px rgba(4, 6, 5, 0.7), 0 0 2px rgba(4, 6, 5, 0.5); }
+.cap::before { content: ""; position: absolute; inset: -40% 0 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(to top, rgba(4, 6, 5, 0.32), rgba(4, 6, 5, 0.12) 45%, rgba(4, 6, 5, 0)); }
+.cap > * { pointer-events: auto; }
+.title { display: grid; gap: 8px; min-width: 0; }
+.title h1 { font-size: clamp(2.6rem, 7vw, 6.2rem); line-height: 0.92; }
+.title .more { font: 500 var(--small)/1.4 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--lamp); justify-self: start; }
+.title .more:hover { text-decoration: underline; text-underline-offset: 4px; }
+.shell.open .title h1 { font-size: clamp(1.8rem, 3.4vw, 2.8rem); }
+.count { display: grid; justify-items: end; gap: 6px; text-align: right; }
+.count .n { font: 400 0.8rem/1 var(--mono); font-variant-numeric: tabular-nums; letter-spacing: 0.08em; }
+.count .n b { font-weight: 500; color: var(--lamp); }
+.count .what { font: 400 0.72rem/1.4 var(--mono); color: var(--muted); max-width: 34ch; }
+.arrows { display: flex; gap: 6px; }
+.arrows button { width: 34px; height: 34px; border: 1px solid var(--rule); border-radius: 50%; display: grid; place-items: center; font: 400 0.9rem/1 var(--mono); color: var(--ink); background: transparent; border-color: rgba(231, 227, 217, 0.28); }
+.arrows button:hover { color: var(--ink); border-color: var(--muted); }
+.hint { position: absolute; z-index: 3; top: 16px; right: 18px; font: 400 0.68rem/1.4 var(--mono); color: var(--muted); letter-spacing: 0.06em; pointer-events: none; transition: opacity 0.6s ease; }
+.cursor { position: fixed; left: 0; top: 0; pointer-events: none; font: 500 0.68rem/1 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--lamp); opacity: 0; transition: opacity 0.2s ease; transform: translate(-50%, -50%); white-space: nowrap; z-index: 20; }
+.stage.pointer { cursor: none; }
+.cursor.on { opacity: 1; }
+
+/* introduction panel */
+.panel { min-width: 0; min-height: 0; display: none; flex-direction: column; gap: 16px; }
+.shell.open .panel { display: flex; }
+.panel .head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-top: 8px; }
+.panel .close { font: 500 var(--small)/1.4 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.panel .close:hover { color: var(--ink); }
+.read { overflow-y: auto; min-height: 0; padding-right: 6px; display: grid; gap: 14px; align-content: start; scrollbar-width: thin; scrollbar-color: var(--rule) transparent; }
+.read h2 { font-size: 2.2rem; }
+.read p { font-size: 0.97rem; max-width: 60ch; }
+.read p.lede { font-size: 1.12rem; line-height: 1.5; }
+.facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 6px 14px; margin: 6px 0 0; padding-top: 12px; border-top: 1px solid var(--rule); }
+.facts dt { font: 500 0.68rem/1.7 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.facts dd { margin: 0; font-size: 0.9rem; min-width: 0; }
+.cv { display: grid; gap: 4px; border-top: 1px solid var(--rule); padding-top: 12px; }
+.cv div { display: grid; grid-template-columns: 3.4rem minmax(0, 1fr); gap: 12px; font-size: 0.88rem; padding: 4px 0; }
+.cv span:first-child { white-space: nowrap; font: 400 0.75rem/1.8 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.big { font: 400 1.9rem/1.2 var(--display); }
+
+@media (max-width: 1100px) {
+  :root { --side: 12.5rem; --panel: 20rem; }
+}
+@media (max-width: 860px) {
+  .shell, .shell.open { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); gap: 12px; }
+  .side { gap: 10px; padding: 0; }
+  .me { grid-auto-flow: column; justify-content: space-between; align-items: baseline; }
+  .index > .label, .draft { display: none; }
+  .index ol { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0; }
+  .index a { display: block; padding: 2px 0; }
+  .index a::before { display: none; }
+  .index a b { font-size: 1.15rem; }
+  .index a small { display: none; }
+  .index a.on b { color: var(--lamp); }
+  .links { margin: 0; }
+  .panel { position: fixed; left: 0; right: 0; bottom: 0; max-height: 62%; z-index: 15; background: var(--night); border-top: 1px solid var(--rule);
+    padding: 14px max(16px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+  .cap { padding: 12px; }
+  .hint { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+}
+</style>
+</head>
+<body>
+
+<div class="shell" id="shell">
+  <aside class="side">
+    <div class="me">
+      <a href="#" aria-label="Qianyu Wang, home">Qianyu Wang</a>
+      <span class="label">Digital artist</span>
+    </div>
+    <div class="index">
+      <span class="label">Work</span>
+      <ol id="index"></ol>
+    </div>
+    <div class="links">
+      <nav aria-label="Artist">
+        <a href="#about" data-page="about">About</a>
+        <a href="#contact" data-page="contact">Contact</a>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="stage pointer" id="stage" tabindex="0" aria-roledescription="image viewer" aria-label="Images of the work. Use the arrow keys, the wheel or a click to turn.">
+    <div class="layer" id="layerA"></div>
+    <div class="layer" id="layerB"></div>
+    <p class="hint" id="hint">Scroll, drag or click to turn</p>
+    <div class="cap">
+      <div class="title">
+        <span class="label" id="kicker"></span>
+        <h1 id="title"></h1>
+        <a class="more" id="more" href="#">About the work</a>
+      </div>
+      <div class="count">
+        <div class="arrows"><button type="button" id="prev" aria-label="Previous image">←</button><button type="button" id="next" aria-label="Next image">→</button></div>
+        <span class="n" id="num" aria-live="polite"></span>
+        <span class="what" id="what"></span>
+      </div>
+    </div>
+  </main>
+
+  <section class="panel" id="panel" aria-live="polite">
+    <div class="head"><span class="label" id="panelLabel"></span><a class="close" id="close" href="#">Close</a></div>
+    <div class="read" id="read"></div>
+  </section>
+</div>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<template id="t-fifth-season">
+  <h2>The Fifth Season</h2>
+  <p class="lede">In the Five Elements there is a fifth season, the long summer. It belongs to earth and to the centre, between the other four. The work stays there: one summer night, from dusk to first light, that ends and begins again.</p>
+  <p>A faceless figure in a crystal body dances in a single beam of light. The life in the grass around her is generated by a machine: it does not exist in reality, and appears only in that light.</p>
+  <p>The one she reaches for never appears. She is heard instead, in the insects and the grass, and once, for two seconds of silence, in the sound of watered flowers drinking.</p>
+  <p><em>Instant Fold</em> decentred the human. <em>The Fifth Season</em> decentres the body. It asks how the dead remain: no longer here, and never simply gone.</p>
+  <dl class="facts">
+    <dt>Status</dt><dd>In production</dd>
+    <dt>Form</dt><dd>A two-minute film that loops, then sculpture, print and resin, and VR</dd>
+    <dt>Made with</dt><dd>Blender, motion capture, geometry nodes, generative imagery</dd>
+    <dt>Ideas</dt><dd>Becoming, hauntology, continuing bonds, animacy</dd>
+  </dl>
+</template>
+
+<template id="t-jankspace">
+  <h2>Jankspace: Residues of The Stack</h2>
+  <p class="lede">A third-person open-world game by Daniel Felstead and Jenn Leung, commissioned by State of Fashion. The player moves through a labyrinth of glossy, crimson showrooms as the digital twin of Julia Fox.</p>
+  <p>I built the game's environments in Unreal Engine, developed materials and bound hair to the character rigs, and worked on 3D animation for the in-world film <em>Welcome to Jankspace, Babes</em>, released on DIS in 2025.</p>
+  <dl class="facts">
+    <dt>Role</dt><dd>3D environment artist, Unreal Engine team</dd>
+    <dt>Shown</dt><dd>State of Fashion Biennale 2026, <em>Available to Promise</em>, Arnhem, Netherlands</dd>
+    <dt></dt><dd><em>Infrastructures: making space for the desires of others</em>, curated by Václav Janoščík, Dům umění Ústí nad Labem, Czech Republic</dd>
+    <dt>Credits</dt><dd>Game design and creative direction: Daniel Felstead. Interaction design and development: Jenn Leung. Digital fashion skins: Marie Lueder and Holly Jayne Wild.</dd>
+  </dl>
+</template>
+
+<template id="t-animacy">
+  <h2>Animacy 2.0</h2>
+  <p class="lede">A multidimensional ecosystem of cohabitation at the intersection of the artificial and the digital. The images were grown, not found.</p>
+  <p>Night photographs of plants were read back as text by a vision-language model, used to train custom models, and pushed until the plants turned strange: light now comes from inside them, and their forms drift between flower, skull and bird.</p>
+  <p>Printed on canvas, then finished by hand with resin that coils over the stems and spills past the frame, so the digital image gains a physical body no model generated.</p>
+  <dl class="facts">
+    <dt>Medium</dt><dd>Print on canvas, resin</dd>
+    <dt>Format</dt><dd>Four panels, 25 × 25 cm each, hung in a single vertical column</dd>
+    <dt>Shown</dt><dd><em>The Green Grammar</em>, ArtSECT Gallery, London, May 2025</dd>
+    <dt></dt><dd><em>Soft Borders</em>, Bartha Contemporary, London, 12 to 15 November 2026</dd>
+  </dl>
+</template>
+
+<template id="t-wonderland">
+  <h2>Wonderland</h2>
+  <p class="lede">A moving-image work built around one character and the worlds she passes through: open sky, green water, a forest floor.</p>
+  <p>A hand reaches into the clouds, a snail crosses a palm, a koi slides past her face. Then her face becomes a desktop, with folders and a balance.</p>
+  <p>I built the character and the scenes.</p>
+  <dl class="facts">
+    <dt>Role</dt><dd>Character and scene building</dd>
+    <dt>Shown</dt><dd><em>Veins of Dreams</em>, ArtSECT Gallery, London, 4 to 6 September 2024</dd>
+    <dt></dt><dd><em>Bodystack</em>, Aesthetica Short Film Festival, York, 8 November 2024</dd>
+  </dl>
+</template>
+
+<template id="t-instant-fold">
+  <h2>Instant Fold</h2>
+  <p class="lede">An experimental short film responding to inhumanism, xenofeminism and animism. The world is a container of constant elements; only their arrangement and order change.</p>
+  <p>A figure shifts between human, horse and centaur across three scenes, <em>Field</em>, <em>Wave</em> and <em>Echo</em>, in a space without fixed scale, where a blade of grass and a giant eye share the same field.</p>
+  <dl class="facts">
+    <dt>Made with</dt><dd>Blender, Unreal Engine 5, TouchDesigner, Clo3D, ZBrush, Xsens motion capture, MotionBuilder</dd>
+    <dt>Shown</dt><dd>Flair Fashion, London, 2025</dd>
+  </dl>
+</template>
+
+<template id="t-about">
+  <h2>About</h2>
+  <p class="lede">I work with animacy: the moment something without a body, or without life, becomes present to us. I call that moment the instant fold.</p>
+  <p>I grew up in a Buddhist family. When I watered the flowers as a child, my mother told me that the gurgling sound was the flower drinking. I chose to believe her, and that choice planted something in me that has never left: the belief that everything, living or not, has a life of its own.</p>
+  <p>My works stage this moment with digital means: real-time 3D, motion capture, generative media and hand-finished resin. In each work, a single light in the dark makes something present that would otherwise go unseen.</p>
+  <div class="cv">
+    <span class="label">Exhibitions and screenings</span>
+    <div><span>2026</span><span><em>Soft Borders</em>, Bartha Contemporary, London, 12 to 15 November. <em>Animacy 2.0</em></span></div>
+    <div><span>2026</span><span><em>Infrastructures</em>, Dům umění Ústí nad Labem. <em>Jankspace</em></span></div>
+    <div><span>2026</span><span>State of Fashion Biennale, Arnhem. <em>Jankspace</em></span></div>
+    <div><span>2025</span><span>DIS, online. <em>Welcome to Jankspace, Babes</em></span></div>
+    <div><span>2025</span><span>Flair Fashion, London (screening). <em>Instant Fold</em></span></div>
+    <div><span>2025</span><span><em>The Green Grammar</em>, ArtSECT Gallery, London. <em>Animacy 2.0</em></span></div>
+    <div><span>2024</span><span><em>Bodystack</em>, Aesthetica Short Film Festival, York. <em>Wonderland</em></span></div>
+    <div><span>2024</span><span><em>Veins of Dreams</em>, ArtSECT Gallery, London. <em>Wonderland</em></span></div>
+    <div><span>2018</span><span><em>Zebra</em>, Beijing International Biennale, with OISTAT. Group work, The Central Academy of Drama</span></div>
+  </div>
+  <div class="cv">
+    <span class="label">Education</span>
+    <div><span>2023–24</span><span>MA Fashion Media and Communication (Distinction), London College of Fashion, University of the Arts London</span></div>
+    <div><span>2017–21</span><span>BA Stage, Film and Television Design (Scenography), The Central Academy of Drama, Beijing</span></div>
+  </div>
+</template>
+
+<template id="t-contact">
+  <h2>Contact</h2>
+  <p class="big">qianyuwork@outlook.com</p>
+  <p>Based in London.</p>
+</template>
+
+<script>
+(function () {
+  // [src, width, height, what it shows]
+  var WORKS = {
+    "fifth-season": {
+      title: "The Fifth Season", kicker: "Latest work · Instant Fold, in development", short: "In development",
+      images: [
+        ["img/fs-f1.jpg", 1920, 1080, "Dusk. The crystal brim from the fisheye camera above her head"],
+        ["img/fs-f2.jpg", 1920, 1080, "Night. Looking down through the brim, the generated life around her"],
+        ["img/fs-2.jpg", 1920, 1080, "Dusk. Shot 2 of 7, low, at the water. Blender test render"],
+        ["img/fs-3.jpg", 1920, 1080, "Night. Shot 3 of 7, close. Blender test render"],
+        ["img/fs-4.jpg", 1920, 1080, "Night. Shot 4 of 7, from above. Blender test render"],
+        ["img/fs-5.jpg", 1920, 1080, "Night. Shot 5 of 7, the fold. Blender test render"],
+        ["img/fs-6.jpg", 1920, 1080, "Dawn. Shot 6 of 7, low, at the water. Blender test render"],
+        ["img/fs-f3.jpg", 1920, 1080, "Night. The ring of beads from the fisheye camera above her head"],
+        ["img/fs-f4.jpg", 1920, 1080, "Night. The brim and its strands, lit from above"]
+      ]
+    },
+    "jankspace": {
+      title: "Jankspace", kicker: "Collaboration · 2026", short: "2026",
+      images: [
+        ["img/jk-01.jpg", 1920, 1080, "The digital twin, fallen in a showroom. Unreal Engine"],
+        ["img/jk-02.jpg", 1641, 895, "The crimson showroom environment. Unreal Engine, work in progress"],
+        ["img/jk-03.jpg", 1134, 639, "The digital twin, close up"],
+        ["img/jk-04.jpg", 1716, 861, "The digital twin lying on the showroom floor"],
+        ["img/jk-05.jpg", 1554, 756, "Face, hair and lashes, close up. Work in progress"],
+        ["img/jk-06.jpg", 1199, 619, "The digital twin seen from above. Work in progress"]
+      ]
+    },
+    "animacy": { title: "Animacy 2.0", kicker: "Instant Fold · 2025", short: "2025", images: [] },
+    "wonderland": {
+      title: "Wonderland", kicker: "Moving image · 2024", short: "2024",
+      images: [
+        ["img/il-01.jpg", 549, 275, "A koi passes in front of her face"],
+        ["img/il-02.jpg", 550, 276, "A hand reaching into open sky"],
+        ["img/il-03.jpg", 548, 275, "A snail crossing her palm"],
+        ["img/il-04.jpg", 549, 275, "Light through green water"],
+        ["img/il-05.jpg", 535, 268, "Her face, out of focus, under water"],
+        ["img/il-06.jpg", 548, 275, "Her face as a desktop: folders and a balance"]
+      ]
+    },
+    "instant-fold": {
+      title: "Instant Fold", kicker: "Short film", short: "Short film",
+      images: [
+        ["img/if-01.jpg", 2000, 532, "A giant figure lying across a city, seen from above"],
+        ["img/if-02.jpg", 2000, 297, "Giant figures among the towers"],
+        ["img/if-03.jpg", 2000, 838, "A pale figure among white strands"],
+        ["img/if-04.jpg", 2000, 838, "A blue face, and a small figure reaching out beside it"],
+        ["img/if-05.jpg", 2000, 838, "A figure among drifting points of light"],
+        ["img/if-06.jpg", 2000, 838, "A silvery face beside the eye of a white horse"],
+        ["img/if-07.jpg", 2000, 838, "A face in a cold light"],
+        ["img/if-08.jpg", 2000, 838, "A figure falling past a pale planet"],
+        ["img/if-09.jpg", 2000, 838, "A pale planet over a field of stars"],
+        ["img/if-10.jpg", 2000, 838, "Title card for the scene Echo"]
+      ]
+    }
+  };
+  var ORDER = ["fifth-season", "jankspace", "animacy", "wonderland", "instant-fold"];
+  var PAGES = { about: "About", contact: "Contact" };
+
+  var $ = function (id) { return document.getElementById(id); };
+  var shell = $("shell"), stage = $("stage"), layers = [$("layerA"), $("layerB")], front = 0;
+  var cur = null, idx = 0, lock = false;
+
+  $("index").innerHTML = ORDER.map(function (k) {
+    return '<li><a href="#' + k + '" data-work="' + k + '"><b>' + WORKS[k].title + '</b><small>' + WORKS[k].short + '</small></a></li>';
+  }).join("");
+
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+
+  function paint(animate) {
+    var w = WORKS[cur], next = layers[1 - front], old = layers[front];
+    if (!w.images.length) {
+      next.innerHTML = '<div class="empty"><h2>' + w.title + '</h2><span class="label">Images to come</span></div>';
+    } else {
+      var im = w.images[idx];
+      next.innerHTML = '<img src="' + im[0] + '" width="' + im[1] + '" height="' + im[2] + '" alt="' + im[3].replace(/"/g, "") + '">';
+    }
+    next.style.zIndex = 2; old.style.zIndex = 1; old.innerHTML = "";
+    front = 1 - front;
+    var n = w.images.length;
+    $("num").innerHTML = n ? "<b>" + pad(idx + 1) + "</b> / " + pad(n) : "";
+    $("what").textContent = n ? w.images[idx][3] : "";
+    $("prev").hidden = $("next").hidden = n < 2;
+    stage.classList.toggle("pointer", n > 1 && matchMedia("(hover: hover)").matches);
+  }
+
+  function turn(step) {
+    var n = WORKS[cur].images.length;
+    if (n < 2 || lock) return;
+    lock = true; setTimeout(function () { lock = false; }, 350);
+    idx = (idx + step + n) % n;
+    paint(true);
+    $("hint").style.opacity = 0;
+  }
+
+  function setWork(k) {
+    if (cur === k) return;
+    cur = k; idx = 0;
+    $("title").textContent = WORKS[k].title;
+    $("kicker").textContent = WORKS[k].kicker;
+    $("more").href = "#" + k;
+    document.querySelectorAll("[data-work]").forEach(function (a) { a.classList.toggle("on", a.dataset.work === k); });
+    paint(true);
+  }
+
+  function route() {
+    var h = (location.hash || "").slice(1);
+    var open = WORKS[h] ? h : (PAGES[h] ? h : null);
+    if (WORKS[h]) setWork(h); else if (!cur) setWork("fifth-season");
+    shell.classList.toggle("open", !!open);
+    $("more").hidden = !!open;
+    document.querySelectorAll("[data-page]").forEach(function (a) { a.classList.toggle("on", a.dataset.page === h); });
+    if (open) {
+      $("panelLabel").textContent = WORKS[h] ? WORKS[h].kicker : PAGES[h];
+      $("read").innerHTML = $("t-" + h).innerHTML;
+      $("read").scrollTop = 0;
+    }
+  }
+  window.addEventListener("hashchange", route);
+  route();
+
+  // leafing through: wheel or trackpad, drag or swipe, click, keys
+  var acc = 0, accT = 0;
+  stage.addEventListener("wheel", function (e) {
+    e.preventDefault();
+    var now = Date.now(); if (now - accT > 220) acc = 0; accT = now;
+    acc += Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+    if (Math.abs(acc) > 40) { turn(acc > 0 ? 1 : -1); acc = 0; }
+  }, { passive: false });
+
+  var down = null, moved = false;
+  stage.addEventListener("pointerdown", function (e) { if (e.target.closest("a, button")) return; down = { x: e.clientX, y: e.clientY }; moved = false; });
+  stage.addEventListener("pointermove", function (e) {
+    var r = stage.getBoundingClientRect();
+    var fx = (e.clientX - r.left) / r.width - 0.5, fy = (e.clientY - r.top) / r.height - 0.5;
+    var c = $("cursor");
+    c.style.left = e.clientX + "px"; c.style.top = e.clientY + "px";
+    c.textContent = fx < 0 ? "← Previous" : "Next →";
+    c.classList.toggle("on", stage.classList.contains("pointer") && !e.target.closest("a, button"));
+    if (down && Math.abs(e.clientX - down.x) > 8) moved = true;
+  });
+  stage.addEventListener("pointerleave", function () { $("cursor").classList.remove("on"); });
+  stage.addEventListener("pointerup", function (e) {
+    if (!down) return;
+    var dx = e.clientX - down.x, dy = e.clientY - down.y; down = null;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) { turn(dx < 0 ? 1 : -1); return; }
+    if (!moved) { var r = stage.getBoundingClientRect(); turn(e.clientX - r.left < r.width / 2 ? -1 : 1); }
+  });
+  $("prev").addEventListener("click", function () { turn(-1); });
+  $("next").addEventListener("click", function () { turn(1); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") { e.preventDefault(); turn(1); }
+    if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); turn(-1); }
+    if (e.key === "Escape" && shell.classList.contains("open")) location.hash = "";
+  });
+})();
+</script>
+</body>
+</html>
