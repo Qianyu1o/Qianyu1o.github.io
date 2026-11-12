@@ -264,7 +264,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
 
 <script>
 (function () {
-  // [src, width, height, what it shows]
+  // [src, width, height, alt text for screen readers, visible caption (only size and material)]
   var WORKS = {
     "fifth-season": {
       title: "The Fifth Season", kicker: "Latest work · Instant Fold, in development", short: "In development",
@@ -295,10 +295,10 @@ html.article .top { background: var(--bg); text-shadow: none; }
       title: "Animacy 2.0", kicker: "Instant Fold · 2025", short: "2025",
       images: [
         ["img/an-01.jpg", 800, 1085, "Installation view: four panels hung in a single column"],
-        ["img/an-02.jpg", 1000, 1000, "Panel I. Print on canvas, resin, 25 × 25 cm"],
-        ["img/an-03.jpg", 1000, 1000, "Panel II. Print on canvas, resin, 25 × 25 cm"],
-        ["img/an-04.jpg", 1000, 1000, "Panel III. Print on canvas, resin, 25 × 25 cm"],
-        ["img/an-05.jpg", 1000, 1000, "Panel IV. Print on canvas, resin, 25 × 25 cm"]
+        ["img/an-02.jpg", 1000, 1000, "Panel I", "Print on canvas, resin, 25 × 25 cm"],
+        ["img/an-03.jpg", 1000, 1000, "Panel II", "Print on canvas, resin, 25 × 25 cm"],
+        ["img/an-04.jpg", 1000, 1000, "Panel III", "Print on canvas, resin, 25 × 25 cm"],
+        ["img/an-05.jpg", 1000, 1000, "Panel IV", "Print on canvas, resin, 25 × 25 cm"]
       ]
     },
     "wonderland": {
@@ -367,7 +367,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
     $("kicker").textContent = w.kicker;
     $("read").href = "#" + cur;
     $("num").innerHTML = "<b>" + pad(idx + 1) + "</b> / " + pad(n);
-    $("what").textContent = im[3];
+    $("what").textContent = im[4] || "";
     $("prev").hidden = $("next").hidden = n < 2;
     document.querySelectorAll("[data-work]").forEach(function (a) { a.classList.toggle("on", a.dataset.work === cur); });
     tone(cur);
@@ -422,7 +422,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
   // ---------- article: the long read
   function fig(im) {
     var cls = im[2] > im[1] * 1.05 ? "tall" : (Math.abs(im[1] - im[2]) < im[1] * 0.05 ? "sq" : "");
-    return '<figure class="' + cls + '"><img src="' + im[0] + '" width="' + im[1] + '" height="' + im[2] + '" alt="' + esc(im[3]) + '" loading="lazy"><figcaption>' + esc(im[3]) + '</figcaption></figure>';
+    return '<figure class="' + cls + '"><img src="' + im[0] + '" width="' + im[1] + '" height="' + im[2] + '" alt="' + esc(im[3]) + '" loading="lazy">' + (im[4] ? '<figcaption>' + esc(im[4]) + '</figcaption>' : '') + '</figure>';
   }
   function article(k) {
     var w = WORKS[k], tpl = $("t-" + k).content.cloneNode(true), box = document.createElement("div");
