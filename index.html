@@ -102,6 +102,10 @@ html.article .top { background: var(--bg); text-shadow: none; }
 .body figure { margin: 0; display: grid; gap: 8px; }
 .body figure img { width: 100%; height: auto; }
 .body figure.tall img, .body figure.sq img { width: auto; max-height: 88vh; max-width: 100%; }
+.body h3 { font: 400 clamp(1.7rem, 2.6vw, 2.3rem)/1.1 var(--display); margin: 22px 0 0; color: var(--ink); }
+.body p.quote { font: italic 400 1.25rem/1.45 var(--display); color: var(--ink); border-left: 1px solid var(--accent); padding-left: 16px; }
+.refs { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; font-size: 0.88rem; color: var(--muted); }
+.body figure.fit img { width: auto; max-width: 100%; max-height: 82vh; }
 .body figcaption { font: 400 0.72rem/1.5 var(--mono); color: var(--muted); }
 .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
 .facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 18px; margin: 8px 0 0; padding-top: 14px; border-top: 1px solid var(--rule); max-width: 40rem; }
@@ -219,12 +223,60 @@ html.article .top { background: var(--bg); text-shadow: none; }
 
 <template id="t-instant-fold">
   <h2>Instant Fold</h2>
-  <p class="lede">An experimental short film responding to inhumanism, xenofeminism and animism. The world is a container of constant elements; only their arrangement and order change.</p>
-  <p>A figure shifts between human, horse and centaur across three scenes, <em>Field</em>, <em>Wave</em> and <em>Echo</em>, in a space without fixed scale, where a blade of grass and a giant eye share the same field.</p>
+  <p class="lede">“Instant Fold” is an experimental short film that responds to the theme of Inhumanism, exploring the integrated perspectives of non-specific life forms.</p>
+  <p>The film uses a fusion of visual arts and digital technologies to present the experience of “non-human” life, aiming to blur the cognitive boundaries of human-centred understanding and challenge traditional limits of time, space and form.</p>
+  <p class="quote">“We perceive the world as a container, holding constant elements whose only changes lie in the rearrangement and operational order of these elements.”</p>
+  <h3>Research</h3>
+  <p><b>Inhumanism</b> is a philosophical movement challenging anthropocentrism, emphasising that humans are neither the centre of the universe nor of culture. It calls for a re-evaluation of the relationship between human and non-human entities.</p>
+  <p><b>Xenofeminism</b>: “Everyone has the right to speak in a non-specific capacity” and “everyone does not mean just human”. It advocates a redefinition of gender and identity, while deconstructing the binary between nature and culture.</p>
+  <p><b>Animism</b> attributes souls, life forces or spiritual essences to all entities, whether biological or non-biological. Artificial intelligence, machines and even elements within virtual worlds possess a form of “existence”, with an agency of their own.</p>
+  <h3>Narrative structure: field theory and becoming</h3>
+  <p>The narrative revolves around the flow and diversity of life, with three core elements: Field, Wave and Echo. The film adopts a field-theory mindset: elements combine not in a linear logic but in a random and open way, so existence is no longer confined to traditional species or shapes. Life becomes a constantly shifting presence within the field.</p>
+  <h3>Scene 1: Field</h3>
+  <p>A field of “lost vectors”: after the collapse of human centrality, how does an individual reorient themselves in a vast non-human system? The camera starts from a micro view of the grass, zooms out to a giant horse’s eye, then pulls back to reveal an even greater entity. The space follows non-Euclidean geometry, with no fixed reference points for near or far.</p>
+  <figure class="fit"><img src="img/if-06.jpg" width="2000" height="838" alt="A silvery face beside the eye of a white horse" loading="lazy"></figure>
+  <h3>Scene 2: Wave</h3>
+  <p>This scene is based on the concept of the wave and resonates with the inner perception system of animism, where the life force of material is sensed. Fragmented waves simulate the flux of particles and leaves, and plant-like structures grow on the character’s skin. The sound merges electronic synthesiser tones with natural ambient noise.</p>
+  <figure class="fit"><img src="img/if-03.jpg" width="2000" height="838" alt="A pale figure among white strands" loading="lazy"></figure>
+  <h3>Scene 3: Echo</h3>
+  <p>This scene pushes “indifference” to its peak, symbolising the dissolution of boundaries. Characters, particles and a massive planet form one space, embodying “impermanence”, the Buddhist idea that all things are in constant change, and “random folding”. Debris floating in space stands for memories and past lives, and the definition of time is blurred.</p>
+  <figure class="fit"><img src="img/if-08.jpg" width="2000" height="838" alt="A figure falling past a pale planet" loading="lazy"></figure>
+  <h3>Character</h3>
+  <p>The character is a constantly transforming organism that flows between dimensions, a hybrid of animal and plant features. It moves between three states, human, horse and centaur, shifting between the virtual and the real, the biological and the non-biological. Its skin blends liquid metal, reflective plastics and organic materials; skin and hair were built with Blender’s geometry nodes, down to the growth path of the eyelashes.</p>
+  <div class="pair">
+    <figure class="fit"><img src="img/if-p01.jpg" width="549" height="830" alt="Skin, hair and material tests for the character" loading="lazy"></figure>
+    <figure class="fit"><img src="img/if-p04.jpg" width="543" height="762" alt="Sculpting and garment tests for the character" loading="lazy"></figure>
+  </div>
+  <figure class="fit"><img src="img/if-p02.jpg" width="1599" height="1021" alt="Skin detail of the character, with the node setup behind it" loading="lazy"></figure>
+  <p>The skeleton was bound with AccuRig, motion was captured with an Xsens suit and retargeted in MotionBuilder, then transferred to the character in Blender, with the face rigged in Auto-Rig. Garments were simulated in Clo3D and imported as Alembic files; accessories were sculpted in ZBrush and bound to the skeleton.</p>
+  <figure class="fit"><img src="img/if-p03.jpg" width="578" height="379" alt="Retargeting motion capture data in MotionBuilder" loading="lazy"></figure>
+  <h3>Worldbuilding</h3>
+  <p>Blender is the main tool, with Unreal Engine 5 and TouchDesigner alongside. All particle systems were simulated with Blender’s geometry nodes, and lighting and rendering were done in Cycles for a soft, tactile texture.</p>
+  <div class="pair">
+    <figure class="fit"><img src="img/if-p05.jpg" width="603" height="336" alt="Particle and fragment set-ups in Blender" loading="lazy"></figure>
+    <figure class="fit"><img src="img/if-p06.jpg" width="596" height="336" alt="Leaf particles and nodes in Blender" loading="lazy"></figure>
+  </div>
+  <p>Unreal Engine 5 handled the large-scale scenes, especially the fast first-person view of the horse: the camera is bound to the horse as it runs along a set path. Plants react to the moving character through forces and collisions. TouchDesigner was used for creative programming, generating particles and dynamic simulations.</p>
+  <figure class="fit"><img src="img/if-p07.jpg" width="1367" height="414" alt="The horse’s first-person camera path in Unreal Engine 5" loading="lazy"></figure>
+  <figure class="fit"><img src="img/if-p08.jpg" width="1474" height="405" alt="The camera bound to the horse in Unreal Engine 5" loading="lazy"></figure>
+  <figure class="fit"><img src="img/if-p09.jpg" width="629" height="952" alt="Plant materials and collisions in Unreal Engine 5" loading="lazy"></figure>
+  <h3>Colour and light</h3>
+  <p>Cool tones of blue, silver and green meet natural elements such as wood grain and copper, with a stark contrast of light and shadow standing for the perception of alien life forms. Light guides the perception of space as fluid, beyond the laws of physics. The film was graded twice, first in Blender’s compositor before the final render.</p>
   <dl class="facts">
-    <dt>Made with</dt><dd>Blender, Unreal Engine 5, TouchDesigner, Clo3D, ZBrush, Xsens motion capture, MotionBuilder</dd>
+    <dt>Year</dt><dd>2025</dd>
+    <dt>Made with</dt><dd>Blender, Unreal Engine 5, TouchDesigner, Clo3D, ZBrush, Xsens motion capture, MotionBuilder, AccuRig</dd>
     <dt>Shown</dt><dd>Flair Fashion, London, 2025</dd>
   </dl>
+  <h3>References</h3>
+  <ul class="refs">
+    <li>Bohr, N. (1928). The Quantum Postulate and the Recent Development of Atomic Theory. <i>Nature</i>, 121, 580–590.</li>
+    <li>Brassier, R. (2007). <i>Nihil Unbound: Enlightenment and Extinction</i>. Palgrave Macmillan.</li>
+    <li>Deleuze, G., and Guattari, F. (1987). <i>A Thousand Plateaus: Capitalism and Schizophrenia</i>. University of Minnesota Press.</li>
+    <li>Harvey, G. (2017). <i>Animism: Respecting the Living World</i> (2nd ed.). Columbia University Press.</li>
+    <li>Hester, H. (2018). <i>Xenofeminism</i>. Polity Press.</li>
+    <li>Turrell, J. (2002). <i>James Turrell: The Other Horizon</i>. Hatje Cantz.</li>
+    <li>Viola, B. (1995). <i>Reasons for Knocking at an Empty House: Writings 1973–1994</i>. Thames and Hudson.</li>
+  </ul>
 </template>
 
 <template id="t-about">
@@ -312,7 +364,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
       ]
     },
     "instant-fold": {
-      title: "Instant Fold", kicker: "Short film", short: "Short film",
+      title: "Instant Fold", kicker: "Short film · 2025", short: "2025",
       images: [
         ["img/if-01.jpg", 2000, 532, "A giant figure lying across a city, seen from above"],
         ["img/if-02.jpg", 2000, 297, "Giant figures among the towers"],
@@ -436,9 +488,11 @@ html.article .top { background: var(--bg); text-shadow: none; }
       html += '<header class="plain-head"><span class="label">' + (w ? esc(w.kicker) : "") + '</span><h1>' + (w ? esc(w.title) : PAGES[k]) + '</h1></header>';
     }
     // text, with the work's images set between the paragraphs
-    var rest = w ? w.images.slice(1) : [], out = '<div class="body">', col = "";
+    var custom = !!box.querySelector("figure");
+    var rest = w && !custom ? w.images.slice(1) : [], out = '<div class="body">', col = "";
     var flush = function () { if (col) { out += '<div class="col">' + col + '</div>'; col = ""; } };
     Array.prototype.forEach.call(box.children, function (el, i) {
+      if (el.tagName === "FIGURE" || el.classList.contains("pair")) { flush(); out += el.outerHTML; return; }
       col += el.outerHTML;
       if (el.tagName === "P" && rest.length && i > 0) {
         flush();
