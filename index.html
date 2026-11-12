@@ -131,8 +131,13 @@ h1, h2 { font-family: var(--display); font-weight: 400; margin: 0; line-height: 
   .index a small { display: none; }
   .index a.on b { color: var(--lamp); }
   .links { margin: 0; }
-  .panel { position: fixed; left: 0; right: 0; bottom: 0; max-height: 62%; z-index: 15; background: var(--night); border-top: 1px solid var(--rule);
-    padding: 14px max(16px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+  /* phone: the image keeps the top of the screen and the introduction scrolls underneath it */
+  .shell.open { grid-template-rows: auto minmax(0, 42%) minmax(0, 1fr); }
+  .panel { border-top: 1px solid var(--rule); padding-bottom: env(safe-area-inset-bottom, 0px); gap: 10px; }
+  .panel .head { padding-top: 10px; }
+  .shell.open .cap .label, .shell.open .cap .what, .shell.open .title .more { display: none; }
+  .shell.open .title h1 { font-size: 1.6rem; }
+  .shell.open .layer img { object-fit: contain; }
   .cap { padding: 12px; }
   .hint { display: none; }
 }
