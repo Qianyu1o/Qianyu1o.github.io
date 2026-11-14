@@ -185,16 +185,6 @@ html.article .top { background: var(--bg); text-shadow: none; }
   </dl>
 </template>
 
-<template id="t-hero-mother">
-  <h2>Hero, Mother</h2>
-  <figure class="fit"><img src="img/hm-02.jpg" width="1200" height="647" alt="White lace over a figure holding a sword" loading="lazy"></figure>
-  <h3>Prototype</h3>
-  <figure><img src="img/hm-board.jpg" width="2470" height="2090" alt="A board of 44 prototype images: glowing white orchids, a small white figure on water and sand, lace, centaurs, a figure with swans, a long-haired figure floating among debris, and a figure holding a sword" loading="lazy"></figure>
-  <dl class="facts">
-    <dt>Year</dt><dd>2026</dd>
-    <dt>Made with</dt><dd>AI image generation, Photoshop</dd>
-  </dl>
-</template>
 
 <template id="t-jankspace">
   <h2>Jankspace: Residues of The Stack</h2>
@@ -340,13 +330,6 @@ html.article .top { background: var(--bg); text-shadow: none; }
         ["img/fs-f4.jpg", 1920, 1080, "Night. The brim and its strands, lit from above"]
       ]
     },
-    "hero-mother": {
-      title: "Hero, Mother", kicker: "2026", short: "2026",
-      images: [
-        ["img/hm-01.jpg", 1231, 748, "Black and white lace over a figure with long pale hair"],
-        ["img/hm-02.jpg", 1200, 647, "White lace over a figure holding a sword"]
-      ]
-    },
     "jankspace": {
       title: "Jankspace", kicker: "Collaboration · 2026", short: "2026",
       images: [
@@ -395,12 +378,11 @@ html.article .top { background: var(--bg); text-shadow: none; }
       ]
     }
   };
-  var ORDER = ["fifth-season", "hero-mother", "jankspace", "animacy", "wonderland", "instant-fold"];
+  var ORDER = ["fifth-season", "jankspace", "animacy", "wonderland", "instant-fold"];
   var PAGES = { about: "About", contact: "Contact" };
   // each work's ground and accent, taken from the main colour of its images
   var TONE = {
     "fifth-season": ["#141a1f", "#e9d5aa"],
-    "hero-mother": ["#1b1c1e", "#d9dde3"],
     "jankspace": ["#3b0c0e", "#ff9d92"],
     "animacy": ["#0f1e2b", "#d6de8e"],
     "wonderland": ["#0f241d", "#e8c47c"],
