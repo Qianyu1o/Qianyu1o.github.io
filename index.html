@@ -112,6 +112,11 @@ html.article .top { background: var(--bg); text-shadow: none; }
 .seq.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .seq.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .seq figure { margin: 0; }
+.palette { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--rule); }
+.palette li { display: grid; gap: 6px; padding-bottom: 4px; }
+.palette .chip { display: block; aspect-ratio: 1 / 2.2; max-width: 100%; }
+.palette b { font: 400 1rem/1.2 var(--display); color: var(--ink); padding: 8px 10px 0 0; }
+.palette code { font: 400 0.68rem/1.4 var(--mono); letter-spacing: 0.06em; color: var(--muted); }
 .seq img { width: 100%; height: auto; display: block; }
 .facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 18px; margin: 8px 0 0; padding-top: 14px; border-top: 1px solid var(--rule); max-width: 40rem; }
 .facts dt { font: 500 0.7rem/1.75 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
@@ -136,6 +141,8 @@ html.article .top { background: var(--bg); text-shadow: none; }
   .pair { grid-template-columns: minmax(0, 1fr); }
   .seq, .seq.five { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .seq.three { grid-template-columns: minmax(0, 1fr); }
+  .palette { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 18px; }
+  .palette .chip { aspect-ratio: 1 / 1.4; }
   .top { padding-top: calc(14px + env(safe-area-inset-top, 0px)); }
   .me a { font-size: 1.45rem; }
   .nav { gap: 14px; }
@@ -310,6 +317,16 @@ html.article .top { background: var(--bg); text-shadow: none; }
   <figure class="fit"><img src="img/if-p09.jpg" width="629" height="952" alt="Plant materials and collisions in Unreal Engine 5" loading="lazy"></figure>
   <h3>Colour and light</h3>
   <p>Cool tones of blue, silver and green meet natural elements such as wood grain and copper, with a stark contrast of light and shadow standing for the perception of alien life forms. Light guides the perception of space as fluid, beyond the laws of physics. The film was graded twice, first in Blender’s compositor before the final render.</p>
+  <ul class="palette" aria-label="The film's palette">
+    <li><span class="chip" style="background:#0d0f1a"></span><b>Void</b><code>#0D0F1A</code></li>
+    <li><span class="chip" style="background:#1f2741"></span><b>Deep field</b><code>#1F2741</code></li>
+    <li><span class="chip" style="background:#344d79"></span><b>Echo blue</b><code>#344D79</code></li>
+    <li><span class="chip" style="background:#6b88af"></span><b>Wave</b><code>#6B88AF</code></li>
+    <li><span class="chip" style="background:#c1d5e9"></span><b>Moon</b><code>#C1D5E9</code></li>
+    <li><span class="chip" style="background:#d8e0e6"></span><b>Liquid silver</b><code>#D8E0E6</code></li>
+    <li><span class="chip" style="background:#404431"></span><b>Lichen</b><code>#404431</code></li>
+    <li><span class="chip" style="background:#785c44"></span><b>Copper</b><code>#785C44</code></li>
+  </ul>
   <dl class="facts">
     <dt>Year</dt><dd>2025</dd>
     <dt>Made with</dt><dd>Blender, Unreal Engine 5, TouchDesigner, Clo3D, ZBrush, Xsens motion capture, MotionBuilder, AccuRig</dd>
@@ -542,7 +559,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
     var rest = w && !custom ? w.images.slice(1) : [], out = '<div class="body">', col = "";
     var flush = function () { if (col) { out += '<div class="col">' + col + '</div>'; col = ""; } };
     Array.prototype.forEach.call(box.children, function (el, i) {
-      if (el.tagName === "FIGURE" || el.classList.contains("pair") || el.classList.contains("seq")) { flush(); out += el.outerHTML; return; }
+      if (el.tagName === "FIGURE" || el.classList.contains("pair") || el.classList.contains("seq") || el.classList.contains("palette")) { flush(); out += el.outerHTML; return; }
       col += el.outerHTML;
       if (el.tagName === "P" && rest.length && i > 0) {
         flush();
