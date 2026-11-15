@@ -112,6 +112,9 @@ html.article .top { background: var(--bg); text-shadow: none; }
 .seq.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .seq.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .seq figure { margin: 0; }
+.tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 64rem; }
+.tiles figure { margin: 0; }
+.tiles img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
 .palette { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 0; }
 .palette li { display: grid; gap: 2px; }
 .palette .chip { display: block; height: 22px; }
@@ -141,6 +144,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
   .pair { grid-template-columns: minmax(0, 1fr); }
   .seq, .seq.five { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .seq.three { grid-template-columns: minmax(0, 1fr); }
+  .tiles { gap: 8px; }
   .palette { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 18px; }
   .palette .chip { height: 18px; }
   .top { padding-top: calc(14px + env(safe-area-inset-top, 0px)); }
@@ -234,6 +238,12 @@ html.article .top { background: var(--bg); text-shadow: none; }
   <h2>Jankspace: Residues of The Stack</h2>
   <p class="lede">A third-person open-world game by Daniel Felstead and Jenn Leung, commissioned by State of Fashion. The player moves through a labyrinth of glossy, crimson showrooms as the digital twin of Julia Fox.</p>
   <p>I built the game's environments in Unreal Engine, developed materials and bound hair to the character rigs, and worked on 3D animation for the in-world film <em>Welcome to Jankspace, Babes</em>, released on DIS in 2025.</p>
+  <div class="tiles">
+    <figure><img src="img/jk-02.jpg" width="1641" height="895" alt="The crimson showroom environment. Unreal Engine, work in progress" loading="lazy"></figure>
+    <figure><img src="img/jk-03.jpg" width="1134" height="639" alt="The digital twin, close up" loading="lazy"></figure>
+    <figure><img src="img/jk-04.jpg" width="1716" height="861" alt="The digital twin lying on the showroom floor" loading="lazy"></figure>
+    <figure><img src="img/jk-05.jpg" width="1554" height="756" alt="Face, hair and lashes, close up. Work in progress" loading="lazy"></figure>
+  </div>
   <dl class="facts">
     <dt>Role</dt><dd>3D environment artist, Unreal Engine team</dd>
     <dt>Shown</dt><dd>State of Fashion Biennale 2026, <em>Available to Promise</em>, Arnhem, Netherlands</dd>
@@ -404,8 +414,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
         ["img/jk-02.jpg", 1641, 895, "The crimson showroom environment. Unreal Engine, work in progress"],
         ["img/jk-03.jpg", 1134, 639, "The digital twin, close up"],
         ["img/jk-04.jpg", 1716, 861, "The digital twin lying on the showroom floor"],
-        ["img/jk-05.jpg", 1554, 756, "Face, hair and lashes, close up. Work in progress"],
-        ["img/jk-06.jpg", 1199, 619, "The digital twin seen from above. Work in progress"]
+        ["img/jk-05.jpg", 1554, 756, "Face, hair and lashes, close up. Work in progress"]
       ]
     },
     "animacy": {
@@ -552,7 +561,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
     var rest = w && !custom ? w.images.slice(1) : [], out = '<div class="body">', col = "";
     var flush = function () { if (col) { out += '<div class="col">' + col + '</div>'; col = ""; } };
     Array.prototype.forEach.call(box.children, function (el, i) {
-      if (el.tagName === "FIGURE" || el.classList.contains("pair") || el.classList.contains("seq") || el.classList.contains("palette")) { flush(); out += el.outerHTML; return; }
+      if (el.tagName === "FIGURE" || el.classList.contains("pair") || el.classList.contains("seq") || el.classList.contains("palette") || el.classList.contains("tiles")) { flush(); out += el.outerHTML; return; }
       col += el.outerHTML;
       if (el.tagName === "P" && rest.length && i > 0) {
         flush();
