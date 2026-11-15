@@ -108,6 +108,11 @@ html.article .top { background: var(--bg); text-shadow: none; }
 .body figure.fit img { width: auto; max-width: 100%; max-height: 82vh; }
 .body figcaption { font: 400 0.72rem/1.5 var(--mono); color: var(--muted); }
 .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
+.seq { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.seq.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.seq.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.seq figure { margin: 0; }
+.seq img { width: 100%; height: auto; display: block; }
 .facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 18px; margin: 8px 0 0; padding-top: 14px; border-top: 1px solid var(--rule); max-width: 40rem; }
 .facts dt { font: 500 0.7rem/1.75 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 .facts dd { margin: 0; font-size: 0.95rem; color: var(--soft); min-width: 0; }
@@ -129,6 +134,8 @@ html.article .top { background: var(--bg); text-shadow: none; }
   .headline h1 { font-size: clamp(2.6rem, 13vw, 4rem); }
   .count .what { display: none; }
   .pair { grid-template-columns: minmax(0, 1fr); }
+  .seq, .seq.five { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .seq.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .top { padding-top: calc(14px + env(safe-area-inset-top, 0px)); }
   .me a { font-size: 1.45rem; }
   .nav { gap: 14px; }
@@ -176,9 +183,39 @@ html.article .top { background: var(--bg); text-shadow: none; }
   <h2>The Fifth Season</h2>
   <p class="quote">不生不灭，不垢不净，不增不减<br>Neither arising nor ceasing, neither defiled nor pure, neither increasing nor decreasing.<br><span style="font-style:normal;font-size:0.8em">The Heart Sutra</span></p>
   <p class="lede"><em>The Fifth Season</em> is a field.</p>
+  <figure><img src="img/fs-f1.jpg" width="1920" height="1080" alt="Dusk. The crystal brim from the fisheye camera above her head" loading="lazy"></figure>
   <p>Daylight turns to night, and night to daylight, and the field moves with it. The mind turns with its surroundings; the surroundings turn with the mind <span style="white-space:nowrap">(心随境转，境随心转)</span>.</p>
+  <figure><img src="img/fs-2.jpg" width="1920" height="1080" alt="Dusk. Shot 2 of 7, low, at the water. Blender test render" loading="lazy"></figure>
   <p>Nothing arises and nothing ceases. Still, the light keeps changing.</p>
+  <figure><img src="img/fs-3.jpg" width="1920" height="1080" alt="Night. Shot 3 of 7, close. Blender test render" loading="lazy"></figure>
   <p>It is set in the fifth season, the long summer: the season between seasons.</p>
+  <figure><img src="img/fs-4.jpg" width="1920" height="1080" alt="Night. Shot 4 of 7, from above. Blender test render" loading="lazy"></figure>
+  <div class="pair">
+    <figure><img src="img/fs-p11.jpg" width="960" height="540" alt="From above, a strong spot on the water below her" loading="lazy"></figure>
+    <figure><img src="img/fs-p19.jpg" width="960" height="540" alt="From above, the spot's pool of light filling the frame" loading="lazy"></figure>
+  </div>
+  <figure><img src="img/fs-5.jpg" width="1920" height="1080" alt="Night. Shot 5 of 7, the fold. Blender test render" loading="lazy"></figure>
+  <figure><img src="img/fs-6.jpg" width="1920" height="1080" alt="Dawn. Shot 6 of 7, low, at the water. Blender test render" loading="lazy"></figure>
+  <div class="seq five">
+    <figure><img src="img/fs-q32.jpg" width="1286" height="723" alt="Sequence, frame 1: the crystal brim, level, under a strong spot" loading="lazy"></figure>
+    <figure><img src="img/fs-q41.jpg" width="1286" height="723" alt="Sequence, frame 2: the brim from above, the spot on the water" loading="lazy"></figure>
+    <figure><img src="img/fs-q49.jpg" width="960" height="540" alt="Sequence, frame 3: from above, the spot on the water, the brim turning" loading="lazy"></figure>
+    <figure><img src="img/fs-q50.jpg" width="960" height="540" alt="Sequence, frame 4: from above, the spot on the water, the brim turning" loading="lazy"></figure>
+    <figure><img src="img/fs-q51.jpg" width="960" height="540" alt="Sequence, frame 5: from above, the spot on the water, the brim turning" loading="lazy"></figure>
+    <figure><img src="img/fs-q52.jpg" width="960" height="540" alt="Sequence, frame 6: from above, the spot on the water, the brim turning" loading="lazy"></figure>
+    <figure><img src="img/fs-q53.jpg" width="960" height="540" alt="Sequence, frame 7: from above, the spot on the water, the brim turning" loading="lazy"></figure>
+    <figure><img src="img/fs-q54.jpg" width="960" height="540" alt="Sequence, frame 8: from above, the spot on the water, the brim turning" loading="lazy"></figure>
+    <figure><img src="img/fs-q55.jpg" width="960" height="540" alt="Sequence, frame 9: from above, the spot on the water, the brim turning" loading="lazy"></figure>
+    <figure><img src="img/fs-q56.jpg" width="960" height="540" alt="Sequence, frame 10: from above, the spot on the water, the brim turning" loading="lazy"></figure>
+  </div>
+  <figure><img src="img/fs-f2.jpg" width="1920" height="1080" alt="Night. Looking down through the brim, the generated life around her" loading="lazy"></figure>
+  <figure><img src="img/fs-f3.jpg" width="1920" height="1080" alt="Night. The ring of beads from the fisheye camera above her head" loading="lazy"></figure>
+  <figure><img src="img/fs-f4.jpg" width="1920" height="1080" alt="Night. The brim and its strands, lit from above" loading="lazy"></figure>
+  <div class="seq three">
+    <figure><img src="img/fs-s15.jpg" width="960" height="540" alt="Sequence, frame 1: the brim seen from above in the dark" loading="lazy"></figure>
+    <figure><img src="img/fs-s16.jpg" width="960" height="540" alt="Sequence, frame 2: the brim seen from above in the dark" loading="lazy"></figure>
+    <figure><img src="img/fs-s17.jpg" width="960" height="540" alt="Sequence, frame 3: the brim lit, the pond behind" loading="lazy"></figure>
+  </div>
   <dl class="facts">
     <dt>Status</dt><dd>In production</dd>
     <dt>Form</dt><dd>Moving image, a two-minute loop, with a resin work in development</dd>
@@ -319,6 +356,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
     "fifth-season": {
       title: "The Fifth Season", kicker: "Latest work · Instant Fold, in development", short: "In development",
       images: [
+        ["img/fs-cover-63.jpg", 960, 540, "Night. From above, a fixed spot on the water, the crystal brim crossing its edge"],
         ["img/fs-f1.jpg", 1920, 1080, "Dusk. The crystal brim from the fisheye camera above her head"],
         ["img/fs-f2.jpg", 1920, 1080, "Night. Looking down through the brim, the generated life around her"],
         ["img/fs-2.jpg", 1920, 1080, "Dusk. Shot 2 of 7, low, at the water. Blender test render"],
@@ -491,7 +529,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
     var rest = w && !custom ? w.images.slice(1) : [], out = '<div class="body">', col = "";
     var flush = function () { if (col) { out += '<div class="col">' + col + '</div>'; col = ""; } };
     Array.prototype.forEach.call(box.children, function (el, i) {
-      if (el.tagName === "FIGURE" || el.classList.contains("pair")) { flush(); out += el.outerHTML; return; }
+      if (el.tagName === "FIGURE" || el.classList.contains("pair") || el.classList.contains("seq")) { flush(); out += el.outerHTML; return; }
       col += el.outerHTML;
       if (el.tagName === "P" && rest.length && i > 0) {
         flush();
