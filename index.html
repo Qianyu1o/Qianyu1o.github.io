@@ -235,6 +235,18 @@ html.article .top { background: var(--bg); text-shadow: none; }
   </dl>
 </template>
 
+<template id="t-form-persistence">
+  <h2>A Study of Form and Persistence</h2>
+  <p class="lede">This project begins with a branch of leaves whose outward form remains almost unchanged from its living state to its dried state. Although its appearance seems to persist, its material condition has shifted. It has lost moisture, its texture has changed, and it no longer responds to touch in the same way.</p>
+  <p>Through photographic documentation, I record the branch over time, treating each image as an observation of a particular moment. Dates, measurements and material notes accompany the images, forming an archive of subtle changes that are not always visible to the eye.</p>
+  <p>The process then moves from documentation to material intervention. I apply resin directly onto the leaves and the branch, building a hardened, transparent surface over their existing form. The resin does not keep the plant as it was, nor does it replace it. Leaf and resin become one body, and something new takes shape: no longer only a leaf, and not only resin, but a material presence of its own.</p>
+  <p>I am interested in the relationship between appearance and condition, and in what happens when one form of existence passes into another. The photographs hold the moments the plant passed through; the resin object is what it has become. The work asks how a form remains present while its state continues to change.</p>
+  <dl class="facts">
+    <dt>Status</dt><dd>In development</dd>
+    <dt>Medium</dt><dd>Leaves, branch, resin</dd>
+  </dl>
+</template>
+
 
 <template id="t-jankspace">
   <h2>Jankspace: Residues of The Stack</h2>
@@ -411,6 +423,19 @@ html.article .top { background: var(--bg); text-shadow: none; }
         ["img/fs-f2.jpg", 1920, 1080, "Night. Looking down through the brim, the generated life around her"]
       ]
     },
+    "form-persistence": {
+      title: "A Study of Form and Persistence", kicker: "Instant Fold · In development", short: "In development",
+      images: [
+        ["img/lf-01.jpg", 1600, 1200, "In a circle of light on white paper, a resin-coated branch and leaves curl round, the thin stem casting a long shadow"],
+        ["img/lf-02.jpg", 1600, 1600, "Detail: clear resin along a leaf edge, its green shadow crossed by lines of light"],
+        ["img/lf-03.jpg", 1200, 1600, "From above, the leaves and their resin skin curve into a crescent, with sharp shadows on the paper"],
+        ["img/lf-04.jpg", 1600, 1200, "Detail: the resin-coated stem bends and casts a thin shadow inside the circle of light"],
+        ["img/lf-05.jpg", 1600, 1200, "The leaves curl into a crescent, the clear resin stem stretched out to the right"],
+        ["img/lf-06.jpg", 1600, 923, "Detail: leaves, the resin-coated stem and their shadows"],
+        ["img/lf-07.jpg", 1200, 1600, "The leaves seen from above, the stem running down the page, coated in clear resin"],
+        ["img/lf-08.jpg", 1250, 1600, "Detail: the thin resin-coated stem and its shadow"]
+      ]
+    },
     "jankspace": {
       title: "Jankspace", kicker: "Collaboration · 2026", short: "2026",
       images: [
@@ -452,11 +477,12 @@ html.article .top { background: var(--bg); text-shadow: none; }
       ]
     }
   };
-  var ORDER = ["fifth-season", "jankspace", "animacy", "wonderland", "instant-fold"];
+  var ORDER = ["fifth-season", "form-persistence", "jankspace", "animacy", "wonderland", "instant-fold"];
   var PAGES = { about: "About", contact: "Contact" };
   // each work's ground and accent, taken from the main colour of its images
   var TONE = {
     "fifth-season": ["#141a1f", "#e9d5aa"],
+    "form-persistence": ["#141b15", "#cfe3a6"],
     "jankspace": ["#3b0c0e", "#ff9d92"],
     "animacy": ["#0f1e2b", "#d6de8e"],
     "wonderland": ["#0f241d", "#e8c47c"],
