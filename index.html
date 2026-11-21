@@ -122,6 +122,11 @@ html.article .top { background: var(--bg); text-shadow: none; }
 .palette code { font: 400 0.62rem/1.4 var(--mono); letter-spacing: 0.06em; color: var(--muted); }
 .seq img { width: 100%; height: auto; display: block; }
 .seq.record { gap: 10px; max-width: 76rem; }
+.flow > p { margin: 0 0 18px; }
+.flow > p:last-child { margin-bottom: 0; }
+.flow .portrait { float: right; width: 220px; height: auto; margin: 6px 0 14px 24px; }
+@media (max-width: 720px) { .flow .portrait { width: 38%; margin: 4px 0 10px 16px; } }
+@media (min-width: 1100px) { .flow { position: relative; } .flow .portrait { float: none; position: absolute; top: 6px; left: calc(100% + 72px); width: min(340px, calc(100vw - 40rem - 220px)); margin: 0; } }
 .seq.duo { display: flex; gap: 10px; max-width: 76rem; align-items: flex-start; }
 .seq.duo img { width: 0; min-width: 0; height: auto; flex-basis: 0; }
 .facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 18px; margin: 8px 0 0; padding-top: 14px; border-top: 1px solid var(--rule); max-width: 40rem; }
@@ -379,6 +384,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
 
 <template id="t-about">
   <h2>About</h2>
+  <div class="flow"><img class="portrait" src="img/about-portrait.jpg" width="960" height="1200" alt="Qianyu Wang, seated at a glass table in a white room">
   <p class="lede">My practice explores animacy: the moment something without a body, or something we do not usually consider alive, begins to feel present. I call this moment the Instant Fold.</p>
   <p>I grew up in a Buddhist family. As a child, I used to water the flowers, and my mother would tell me that the gurgling sound was the flowers drinking. It was a small observation, but one that stayed with me and shaped how I came to understand the world. I chose to believe her, and I still find myself believing that everything has a life of its own. Life, to me, is not something possessed exclusively by certain beings and absent in others. It is something that unfolds between things, through the relationships and conditions they share.</p>
   <p>I think of life as a collection of countless moments. Some pass almost unnoticed, while others remain with us, quietly shaping how we remember, perceive and understand the world. I am drawn to the brief intervals in which perception shifts: when something familiar becomes unfamiliar, something overlooked becomes visible, or something previously understood as inert begins to feel alive. These moments are not necessarily dramatic. They often happen quietly, at the threshold between what we see and what we sense.</p>
@@ -387,6 +393,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
   <p>I work across digital and physical media, combining real-time 3D, motion capture, generative media, moving image and hand-finished resin. I am interested in the space between the real and the imagined, and in how an image or an environment can exist somewhere between illusion and lived experience. Rather than treating digital and physical worlds as separate domains, I approach them as overlapping conditions through which different forms of presence can emerge.</p>
   <p>Light, sound, music and moving images are central to my practice. I am particularly interested in the intimate quality of a moment shaped by light: how, for a brief interval, the outside world seems to fall away, leaving only what is in front of us. It is a kind of temporary suspension, somewhere between an illusion and an experience that feels genuinely present.</p>
   <p>At its core, Instant Fold considers life not as a fixed or singular condition, but as a spectrum of unfolding agencies across different forms of existence. Through images, materials and media, I explore how these forms overlap, transform and become perceptible to us. What interests me is not simply whether something is alive, but the moment in which our understanding of it begins to change.</p>
+  </div>
   <div class="cv">
     <span class="label">Exhibitions and screenings</span>
     <div><span>2026</span><span><em>Soft Borders</em>, Bartha Contemporary, London, 12 to 15 November. <em>Animacy 2.0</em></span></div>
