@@ -122,6 +122,8 @@ html.article .top { background: var(--bg); text-shadow: none; }
 .palette code { font: 400 0.62rem/1.4 var(--mono); letter-spacing: 0.06em; color: var(--muted); }
 .seq img { width: 100%; height: auto; display: block; }
 .seq.record { gap: 10px; max-width: 76rem; }
+.seq.duo { display: flex; gap: 10px; max-width: 76rem; align-items: flex-start; }
+.seq.duo img { width: 0; min-width: 0; height: auto; flex-basis: 0; }
 .facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 18px; margin: 8px 0 0; padding-top: 14px; border-top: 1px solid var(--rule); max-width: 40rem; }
 .facts dt { font: 500 0.7rem/1.75 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 .facts dd { margin: 0; font-size: 0.95rem; color: var(--soft); min-width: 0; }
@@ -240,6 +242,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
   <h2>A Form That Remains</h2>
   <h3>Observation record</h3>
   <div class="seq record"><a href="img/lf-frame-01.jpg" target="_blank" rel="noopener"><img src="img/lf-frame-01.jpg" width="640" height="1516" alt="Observation record, frame 1 of 4: week 0, rhizome and new croziers. Close-up photograph with specimen label" loading="lazy"></a><a href="img/lf-frame-02.jpg" target="_blank" rel="noopener"><img src="img/lf-frame-02.jpg" width="640" height="1516" alt="Observation record, frame 2 of 4: about week 3, fronds expanding. Close-up photograph with specimen label" loading="lazy"></a><a href="img/lf-frame-03.jpg" target="_blank" rel="noopener"><img src="img/lf-frame-03.jpg" width="640" height="1516" alt="Observation record, frame 3 of 4: about week 8, mature fronds with browning tips. Close-up photograph with specimen label" loading="lazy"></a><a href="img/lf-frame-04.jpg" target="_blank" rel="noopener"><img src="img/lf-frame-04.jpg" width="640" height="1516" alt="Observation record, frame 4 of 4: about week 12, partly senescent. Close-up photograph with specimen label" loading="lazy"></a></div>
+  <div class="seq duo"><img src="img/lf-box.jpg" width="1672" height="941" style="flex-grow:1.777" alt="The resin-coated branch and leaves lying in a clear acrylic box, seen at an angle" loading="lazy"><img src="img/lf-box-top.jpg" width="1448" height="1086" style="flex-grow:1.333" alt="The resin-coated branch and leaves in the clear acrylic box, seen from above" loading="lazy"></div>
   <p class="lede"><em>A Form That Remains</em> is an ongoing study of time, materiality and the persistence of form.</p>
   <p>What appears unchanged is, in fact, no longer the same. Dried, a leaf keeps the outline it had when it was alive: the edges, the veins, the way it curls. A photograph can hardly tell the two states apart. Only the hand knows. What was soft has become dry, light and brittle.</p>
   <p>The work stays with this quiet change. Not the drama of growing and dying, but the moment when a form persists while the matter inside it has already moved on.</p>
@@ -432,7 +435,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
     "form-that-remains": {
       title: "A Form That Remains", kicker: "Instant Fold · Ongoing project", short: "Ongoing",
       images: [
-        ["img/lf-01.jpg", 1600, 1200, "In a circle of light on white paper, a resin-coated branch and leaves curl round, the thin stem casting a long shadow"],
+        ["img/lf-poster.jpg", 2000, 1126, "The resin-coated branch and leaves in a clear acrylic box, beside a column of its four specimen records: new growth, expanding, mature, senescent"],
         ["img/lf-02.jpg", 1600, 1600, "Detail: clear resin along a leaf edge, its green shadow crossed by lines of light"],
         ["img/lf-03.jpg", 1200, 1600, "From above, the leaves and their resin skin curve into a crescent, with sharp shadows on the paper"],
         ["img/lf-04.jpg", 1600, 1200, "Detail: the resin-coated stem bends and casts a thin shadow inside the circle of light"],
