@@ -93,6 +93,13 @@ html.article .top { background: var(--bg); text-shadow: none; }
 .hero .veil { background: linear-gradient(0deg, var(--bg) 0%, rgba(0, 0, 0, 0) 45%); }
 .hero-text { position: absolute; left: var(--gl); right: var(--gr); bottom: clamp(28px, 6vh, 64px); display: grid; gap: 12px; }
 .hero-text h1 { font-size: clamp(3.2rem, 9vw, 8.5rem); line-height: 0.88; }
+/* phones: a wide hero (heroFull) is shown whole, with the title under it instead of over it */
+@media (max-width: 720px) {
+  .hero.full { height: auto; padding-top: var(--toph, 112px); }
+  .hero.full img { height: auto; object-fit: contain; }
+  .hero.full .veil { display: none; }
+  .hero.full .hero-text { position: static; padding: 28px 0 8px; margin: 0 var(--gr) 0 var(--gl); }
+}
 .plain-head { padding: calc(120px + env(safe-area-inset-top, 0px)) var(--gr) 24px var(--gl); display: grid; gap: 12px; }
 .plain-head h1 { font-size: clamp(3rem, 8vw, 7rem); }
 .body { padding: 24px var(--gr) 96px var(--gl); display: grid; gap: 40px; }
@@ -129,6 +136,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
 @media (min-width: 1100px) { .flow { position: relative; } .flow .portrait { float: none; position: absolute; top: 6px; left: calc(100% + 72px); width: min(340px, calc(100vw - 40rem - 220px)); margin: 0; } }
 .seq.duo { display: flex; gap: 10px; max-width: 76rem; align-items: flex-start; }
 .seq.duo img { width: 0; min-width: 0; height: auto; flex-basis: 0; }
+.body figure.one { max-width: 76rem; }
 .facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 18px; margin: 8px 0 0; padding-top: 14px; border-top: 1px solid var(--rule); max-width: 40rem; }
 .facts dt { font: 500 0.7rem/1.75 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 .facts dd { margin: 0; font-size: 0.95rem; color: var(--soft); min-width: 0; }
@@ -250,8 +258,11 @@ html.article .top { background: var(--bg); text-shadow: none; }
   <div class="seq duo"><img src="img/lf-box.jpg" width="1672" height="941" style="flex-grow:1.777" alt="The resin-coated branch and leaves lying in a clear acrylic box, seen at an angle" loading="lazy"><img src="img/lf-box-top.jpg" width="1448" height="1086" style="flex-grow:1.333" alt="The resin-coated branch and leaves in the clear acrylic box, seen from above" loading="lazy"></div>
   <p class="lede"><em>A Form That Remains</em> is an ongoing study of time, materiality and the persistence of form.</p>
   <p>What appears unchanged is, in fact, no longer the same. Dried, a leaf keeps the outline it had when it was alive: the edges, the veins, the way it curls. A photograph can hardly tell the two states apart. Only the hand knows. What was soft has become dry, light and brittle.</p>
+  <div class="seq duo"><img src="img/lf-02-bw.jpg" width="1600" height="1600" style="flex-grow:1.000" alt="Detail: clear resin along a leaf edge, its shadow crossed by lines of light" loading="lazy"><img src="img/lf-03-bw.jpg" width="1200" height="1600" style="flex-grow:0.750" alt="From above, the leaves and their resin skin curve into a crescent, with sharp shadows on the paper" loading="lazy"><img src="img/lf-04-bw.jpg" width="1600" height="1200" style="flex-grow:1.333" alt="Detail: the resin-coated stem bends and casts a thin shadow inside the circle of light" loading="lazy"></div>
   <p>The work stays with this quiet change. Not the drama of growing and dying, but the moment when a form persists while the matter inside it has already moved on.</p>
+  <figure class="one"><img src="img/lf-06-bw.jpg" width="1600" height="923" alt="Detail: leaves, the resin-coated stem and their shadows" loading="lazy"></figure>
   <p>Resin runs over the leaves and along the branch, and hardens into a clear skin. It does not keep the plant as it was. Leaf and resin become one body, something between a natural specimen and a constructed object: no longer only a plant, not only a material, but a new form of presence.</p>
+  <div class="seq duo"><img src="img/lf-05-bw.jpg" width="1600" height="1200" style="flex-grow:1.333" alt="The leaves curl into a crescent, the clear resin stem stretched out to the right" loading="lazy"><img src="img/lf-07-bw.jpg" width="1200" height="1600" style="flex-grow:0.750" alt="The leaves seen from above, the stem running down the page, coated in clear resin" loading="lazy"><img src="img/lf-08-bw.jpg" width="1250" height="1600" style="flex-grow:0.781" alt="Detail: the thin resin-coated stem and its shadow" loading="lazy"></div>
   <p>To preserve a moment is also to interrupt its continuation. Here, the interruption is also a beginning. Rather than holding on to life itself, the work gives a moment of existence another material form.</p>
   <p>Image and object hold time differently. The photographs keep the moments the leaves passed through; the resin keeps what they have become.</p>
   <p>How does a form remain present while its state continues to change?</p>
@@ -440,16 +451,17 @@ html.article .top { background: var(--bg); text-shadow: none; }
       ]
     },
     "form-that-remains": {
+      heroFull: true,
       title: "A Form That Remains", kicker: "Instant Fold · Ongoing project", short: "Ongoing",
       images: [
-        ["img/lf-poster.jpg", 2000, 1126, "The resin-coated branch and leaves in a clear acrylic box, beside a column of its four specimen records: new growth, expanding, mature, senescent"],
-        ["img/lf-02.jpg", 1600, 1600, "Detail: clear resin along a leaf edge, its green shadow crossed by lines of light"],
-        ["img/lf-03.jpg", 1200, 1600, "From above, the leaves and their resin skin curve into a crescent, with sharp shadows on the paper"],
-        ["img/lf-04.jpg", 1600, 1200, "Detail: the resin-coated stem bends and casts a thin shadow inside the circle of light"],
-        ["img/lf-05.jpg", 1600, 1200, "The leaves curl into a crescent, the clear resin stem stretched out to the right"],
-        ["img/lf-06.jpg", 1600, 923, "Detail: leaves, the resin-coated stem and their shadows"],
-        ["img/lf-07.jpg", 1200, 1600, "The leaves seen from above, the stem running down the page, coated in clear resin"],
-        ["img/lf-08.jpg", 1250, 1600, "Detail: the thin resin-coated stem and its shadow"]
+        ["img/lf-poster-film.jpg", 2000, 1126, "The resin-coated branch and leaves in a clear acrylic box, beside a column of its four specimen records: new growth, expanding, mature, senescent"],
+        ["img/lf-02-bw.jpg", 1600, 1600, "Detail: clear resin along a leaf edge, its shadow crossed by lines of light"],
+        ["img/lf-03-bw.jpg", 1200, 1600, "From above, the leaves and their resin skin curve into a crescent, with sharp shadows on the paper"],
+        ["img/lf-04-bw.jpg", 1600, 1200, "Detail: the resin-coated stem bends and casts a thin shadow inside the circle of light"],
+        ["img/lf-05-bw.jpg", 1600, 1200, "The leaves curl into a crescent, the clear resin stem stretched out to the right"],
+        ["img/lf-06-bw.jpg", 1600, 923, "Detail: leaves, the resin-coated stem and their shadows"],
+        ["img/lf-07-bw.jpg", 1200, 1600, "The leaves seen from above, the stem running down the page, coated in clear resin"],
+        ["img/lf-08-bw.jpg", 1250, 1600, "Detail: the thin resin-coated stem and its shadow"]
       ]
     },
     "jankspace": {
@@ -509,6 +521,9 @@ html.article .top { background: var(--bg); text-shadow: none; }
 
   var $ = function (id) { return document.getElementById(id); };
   var root = document.documentElement, poster = $("poster");
+  // the fixed top bar's height, so a whole-image hero on phones sits just below it
+  function topH() { var t = document.querySelector(".top"); if (t) root.style.setProperty("--toph", (t.offsetHeight + 8) + "px"); }
+  topH(); addEventListener("resize", topH); if (document.fonts) document.fonts.ready.then(topH);
   var cur = "fifth-season", idx = 0, lock = false;
 
   $("index").innerHTML = ORDER.map(function (k) {
@@ -597,7 +612,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
     var html = "";
     if (w && w.images.length) {
       var hero = w.images[0];
-      html += '<figure class="hero"><img src="' + hero[0] + '" width="' + hero[1] + '" height="' + hero[2] + '" alt="' + esc(hero[3]) + '"><div class="veil"></div>' +
+      html += '<figure class="hero' + (w.heroFull ? ' full' : '') + '"><img src="' + hero[0] + '" width="' + hero[1] + '" height="' + hero[2] + '" alt="' + esc(hero[3]) + '"><div class="veil"></div>' +
         '<div class="hero-text"><span class="label">' + esc(w.kicker) + '</span><h1>' + esc(w.title) + '</h1></div></figure>';
     } else {
       html += '<header class="plain-head"><span class="label">' + (w ? esc(w.kicker) : "") + '</span><h1>' + (w ? esc(w.title) : PAGES[k]) + '</h1></header>';
