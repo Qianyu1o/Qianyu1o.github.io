@@ -85,6 +85,8 @@ html.article .top { background: var(--bg); text-shadow: none; }
   opacity: 0; transform: translate(-50%, -50%); white-space: nowrap; text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6); }
 .cursor.on { opacity: 1; }
 .poster.pointer { cursor: none; }
+/* an upright photo marked "whole": on a wide screen it is shown in full at the right, not cropped to a strip */
+@media (min-aspect-ratio: 1/1) { .poster img.whole { object-fit: contain; object-position: 64% 50%; } }
 
 /* article */
 .article-view { position: relative; }
@@ -318,7 +320,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
   <figure class="obsfig"><h3>Observation record</h3><div class="obs2"><a href="img/lf-observation-sheet.jpg" target="_blank" rel="noopener"><img src="img/lf-observation-sheet.jpg" width="2000" height="710" alt="Fourteen black-and-white photographs of the fern in its pot over the months of observation, from new croziers to full, arching fronds" loading="lazy"></a><div class="notebook"><span class="ghost" style="opacity:0.20;filter:blur(3.0px)" aria-hidden="true"></span><a class="note" href="img/lf-slip2-01.jpg" target="_blank" rel="noopener"><img src="img/lf-slip2-01.jpg" width="660" height="1240" alt="Handwritten note 1 of 6, on a paper slip: Halo, little one. I wonder how long you&#39;ve been there before I found u" loading="lazy"></a><span class="ghost" style="opacity:0.29;filter:blur(2.9px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.21;filter:blur(3.0px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.15;filter:blur(2.9px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.23;filter:blur(3.3px)" aria-hidden="true"></span><a class="note" href="img/lf-slip2-02.jpg" target="_blank" rel="noopener"><img src="img/lf-slip2-02.jpg" width="660" height="1240" alt="Handwritten note 2 of 6, on a paper slip: You looks so quiet today..." loading="lazy"></a><span class="ghost" style="opacity:0.14;filter:blur(2.6px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.14;filter:blur(3.3px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.24;filter:blur(2.3px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.30;filter:blur(3.6px)" aria-hidden="true"></span><a class="note" href="img/lf-slip2-03.jpg" target="_blank" rel="noopener"><img src="img/lf-slip2-03.jpg" width="660" height="1240" alt="Handwritten note 3 of 6, on a paper slip: How r u today? I&#39;m sad a bit..." loading="lazy"></a><span class="ghost" style="opacity:0.24;filter:blur(3.1px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.15;filter:blur(2.2px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.22;filter:blur(2.3px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.15;filter:blur(2.5px)" aria-hidden="true"></span><a class="note" href="img/lf-slip2-04.jpg" target="_blank" rel="noopener"><img src="img/lf-slip2-04.jpg" width="660" height="1240" alt="Handwritten note 4 of 6, on a paper slip: Are u still the same leaf? Sry been long time to talk to u. I&#39;m back.. I know something is different." loading="lazy"></a><span class="ghost" style="opacity:0.13;filter:blur(2.8px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.20;filter:blur(3.4px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.21;filter:blur(3.1px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.21;filter:blur(3.1px)" aria-hidden="true"></span><a class="note" href="img/lf-slip2-05.jpg" target="_blank" rel="noopener"><img src="img/lf-slip2-05.jpg" width="660" height="1240" alt="Handwritten note 5 of 6, on a paper slip: I didn&#39;t sleep very well last night. How r u today?" loading="lazy"></a><span class="ghost" style="opacity:0.20;filter:blur(2.6px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.30;filter:blur(3.6px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.27;filter:blur(3.2px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.18;filter:blur(2.5px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.17;filter:blur(2.3px)" aria-hidden="true"></span><a class="note" href="img/lf-slip2-06.jpg" target="_blank" rel="noopener"><img src="img/lf-slip2-06.jpg" width="660" height="1240" alt="Handwritten note 6 of 6, on a paper slip: When did you stop being alive? I mean.. you just looks same, haven&#39;t changed very much on the outside" loading="lazy"></a><span class="ghost" style="opacity:0.26;filter:blur(2.8px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.27;filter:blur(2.7px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.29;filter:blur(3.4px)" aria-hidden="true"></span><span class="ghost" style="opacity:0.12;filter:blur(2.5px)" aria-hidden="true"></span></div></div><figcaption>Notes to the leaf: six pages so far.</figcaption></figure>
   <div class="essay"><div class="er"><div class="et"><p class="lede"><em>A Form That Remains</em> is an ongoing exploration of time, material transformation and the persistence of form.</p></div><div class="seq duo"><img src="img/lf-02-bw.jpg" width="1600" height="1600" style="flex-grow:1.000" alt="Detail: clear resin along a leaf edge, its shadow crossed by lines of light" loading="lazy"><img src="img/lf-03-bw.jpg" width="1200" height="1600" style="flex-grow:0.750" alt="From above, the leaves and their resin skin curve into a crescent, with sharp shadows on the paper" loading="lazy"></div></div><div class="er flip"><div class="et"><p>The project begins with a leaf whose appearance remains almost unchanged as it moves from a living state to a dried one. Through a series of photographic observations, I document its gradual transformation, recording details such as time and humidity alongside handwritten notes. These notes become a more personal form of correspondence, bringing together observations of the leaf and fragments of my own thoughts.</p></div><div class="seq duo"><img src="img/lf-04-bw.jpg" width="1600" height="1200" style="flex-grow:1.333" alt="Detail: the resin-coated stem bends and casts a thin shadow inside the circle of light" loading="lazy"><img style="flex-grow:1.733" src="img/lf-06-bw.jpg" width="1600" height="923" alt="Detail: leaves, the resin-coated stem and their shadows" loading="lazy"></div></div><div class="er"><div class="et"><p>The work then extends into a three-dimensional structure made from wire. Arranged like a cluster of leaves, the structure holds a resin-coated leaf within it. Resin is also applied to the wire, where it forms suspended droplets, capturing a moment between flowing and falling.</p></div><div class="seq duo"><img src="img/lf-05-bw.jpg" width="1600" height="1200" style="flex-grow:1.333" alt="The leaves curl into a crescent, the clear resin stem stretched out to the right" loading="lazy"><img src="img/lf-07-bw.jpg" width="1200" height="1600" style="flex-grow:0.750" alt="The leaves seen from above, the stem running down the page, coated in clear resin" loading="lazy"><img src="img/lf-08-bw.jpg" width="1250" height="1600" style="flex-grow:0.781" alt="Detail: the thin resin-coated stem and its shadow" loading="lazy"></div></div><div class="er flip"><div class="et"><p>Across the photographs and sculptural form, the project considers different ways of holding time. The leaf retains its recognisable shape while its material condition changes; the resin droplets appear to pause in the middle of an action. Rather than simply preserving an object, the work explores what happens when a changing form is held in place.</p></div><div class="eq"><p class="q">How does a form remain present while its state continues to change?</p></div></div></div>
   <div class="essay pieces"><div class="er full"><div class="seq duo" style="--ar:1.669"><a href="img/lf-detail-01.jpg" target="_blank" rel="noopener" style="flex-grow:0.750"><img src="img/lf-detail-01.jpg" width="1200" height="1600" alt="Detail: the wire bent into small loops, a clear bead of resin at its tip" loading="lazy"></a><a href="img/lf-detail-02.jpg" target="_blank" rel="noopener" style="flex-grow:0.919"><img src="img/lf-detail-02.jpg" width="1471" height="1600" alt="Detail: a single curve of wire ending in a drop of resin" loading="lazy"></a></div></div><div class="er full"><div class="seq duo spread"><a href="img/lf-piece-01.jpg" target="_blank" rel="noopener" style="flex-grow:0.750"><img src="img/lf-piece-01.jpg" width="1200" height="1600" alt="The piece in a silver candlestick: a tall S-shaped wire rising above the resin-coated leaves" loading="lazy"></a><a href="img/lf-piece-02.jpg" target="_blank" rel="noopener" style="flex-grow:0.750"><img src="img/lf-piece-02.jpg" width="1200" height="1600" alt="The piece in a silver candlestick, from another angle: a long wire rising from loops of wire and the resin-coated leaves" loading="lazy"></a></div></div></div>
-  <figure class="preview"><div class="pv-note"><p class="pv-label">3D preview · still ongoing</p><p>The leaf in its acrylic box, as planned. Not the finished work.</p><dl class="facts"><dt>Status</dt><dd>Ongoing</dd><dt>Medium</dt><dd>Leaves, branch, resin</dd></dl></div><div class="seq duo"><img src="img/lf-box.jpg" width="1672" height="941" style="flex-grow:1.777" alt="3D preview: the resin-coated branch and leaves lying in a clear acrylic box, seen at an angle" loading="lazy"><img src="img/lf-box-top.jpg" width="1448" height="1086" style="flex-grow:1.333" alt="3D preview: the resin-coated branch and leaves in the clear acrylic box, seen from above" loading="lazy"></div></figure>
+  <figure class="preview"><div class="pv-note"><p class="pv-label">3D preview · still ongoing</p><p>The leaf in its acrylic box, as planned.</p><dl class="facts"><dt>Status</dt><dd>Ongoing</dd><dt>Medium</dt><dd>Leaves, branch, resin</dd></dl></div><div class="seq duo"><img src="img/lf-box.jpg" width="1672" height="941" style="flex-grow:1.777" alt="3D preview: the resin-coated branch and leaves lying in a clear acrylic box, seen at an angle" loading="lazy"><img src="img/lf-box-top.jpg" width="1448" height="1086" style="flex-grow:1.333" alt="3D preview: the resin-coated branch and leaves in the clear acrylic box, seen from above" loading="lazy"></div></figure>
 </template>
 
 
@@ -502,6 +504,11 @@ html.article .top { background: var(--bg); text-shadow: none; }
     "form-that-remains": {
       heroFull: true,
       title: "A Form That Remains", kicker: "Instant Fold · Ongoing project", short: "Ongoing",
+      // the home page shows these two first, then the rest; the work's own page still opens on images[0]
+      lead: [
+        ["img/lf-home-01.jpg", 1200, 1600, "The resin-coated leaf held in the wire, drops of resin hanging from its tips", "", "whole"],
+        ["img/lf-home-02.jpg", 1127, 1600, "The wire structure rising from the candlestick, a drop of resin hanging from its hook", "", "whole"]
+      ],
       images: [
         ["img/lf-poster-film.jpg", 2000, 1126, "The resin-coated branch and leaves in a clear acrylic box, beside a column of its four specimen records: new growth, expanding, mature, senescent"],
         ["img/lf-02-bw.jpg", 1600, 1600, "Detail: clear resin along a leaf edge, its shadow crossed by lines of light"],
@@ -579,6 +586,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
     return '<li><a href="#' + k + '" data-work="' + k + '"><b>' + WORKS[k].title + '</b><small>' + WORKS[k].short + '</small></a></li>';
   }).join("");
 
+  function slides(w) { return w.lead ? w.lead.concat(w.images) : w.images; }
   function pad(n) { return (n < 10 ? "0" : "") + n; }
   function esc(t) { return String(t).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;"); }
 
@@ -590,9 +598,10 @@ html.article .top { background: var(--bg); text-shadow: none; }
 
   // ---------- home: the poster
   function paint() {
-    var w = WORKS[cur], im = w.images[idx], n = w.images.length;
+    var w = WORKS[cur], list = slides(w), im = list[idx], n = list.length;
     var img = $("posterImg");
     img.src = im[0]; img.width = im[1]; img.height = im[2]; img.alt = im[3];
+    img.classList.toggle("whole", im[5] === "whole");
     $("title").textContent = w.title;
     $("kicker").textContent = w.kicker;
     $("read").href = "#" + cur;
@@ -604,7 +613,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
   }
   function setWork(k) { if (k !== cur) { cur = k; idx = 0; paint(); } }
   function turn(step) {
-    var n = WORKS[cur].images.length;
+    var n = slides(WORKS[cur]).length;
     if (n < 2 || lock) return;
     lock = true; setTimeout(function () { lock = false; }, 350);
     idx = (idx + step + n) % n; paint();
@@ -631,7 +640,7 @@ html.article .top { background: var(--bg); text-shadow: none; }
     var c = $("cursor"), half = e.clientX < innerWidth / 2;
     c.style.left = e.clientX + "px"; c.style.top = e.clientY + "px";
     c.textContent = half ? "← Previous" : "Next →";
-    c.classList.toggle("on", fine && WORKS[cur].images.length > 1);
+    c.classList.toggle("on", fine && slides(WORKS[cur]).length > 1);
     if (down && Math.abs(e.clientX - down.x) > 8) moved = true;
   });
   poster.addEventListener("pointerleave", function () { $("cursor").classList.remove("on"); });
